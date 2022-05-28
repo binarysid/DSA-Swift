@@ -27,14 +27,26 @@ class PriorityQueue{
         type.getComparator()
     }
     private var type:PriorityType
-    init(_ item:[Int],type:PriorityType){
-        if item.count == 0{fatalError("initializer with zero item not allowed")}
+    var firstChild:Int?{
+        get{
+            guard size()>1 else{return nil}
+            return item[1]
+        }
+    }
+    var secondChild:Int?{
+        get{
+            guard size()>2 else{return nil}
+            return item[2]
+        }
+    }
+    init(_ item:[Int],_ type:PriorityType){
         self.item = item
         self.type = type
         self.heapify()
     }
-    public init(){
-        fatalError("initializer with zero item not allowed")
+    public convenience init(_ type:PriorityType){
+        self.init([],type)
+        self.type = type
     }
     private func heapify(){
         var curr = self.item.count - 1
@@ -122,6 +134,7 @@ class PriorityQueue{
         }
     }
     func peek()->Int{
+        if item.count==0{fatalError("no item found")}
         return item.first!
     }
     func toArray()->[Int]{
@@ -134,8 +147,10 @@ class PriorityQueue{
         item = []
     }
     func poll()->Int{
+        if item.count==0{fatalError("no item found")}
         let root = item.first!
         item.remove(at: 0)
         return root
     }
+    
 }
