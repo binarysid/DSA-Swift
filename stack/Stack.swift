@@ -31,7 +31,7 @@ class Stack<T>{
         guard !self.isEmpty else{return}
         items.removeFirst()
     }
-    func getItems()->[T?]{
+    func getItems()->[T]{
         return items
     }
 }

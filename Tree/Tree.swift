@@ -28,7 +28,7 @@ class Tree{
                 queue.enqueue(t)
             }
             i += 1
-            if i<elements.count, let val = elements[i]{
+            if i<elements.count, let val = elements[i]{ // add rightchild
                 let t = TreeNode(value: val)
                 p?.right = t
                 queue.enqueue(t)
@@ -75,7 +75,7 @@ class Tree{
             return 1+minDepth(node: node?.left)
         }
     }
-    func levelOrder(_ root: TreeNode?) -> [[Int]] {
+    func levelOrder(_ root: TreeNode?) -> [[Int]] {// BFS
         if root  == nil {return []}
         var arr:[[Int]] = []
         var queue = Queue()
